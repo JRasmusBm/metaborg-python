@@ -14,7 +14,7 @@ imports
   trans/desugar/Expression
 
 rules  
-  desugar-stmt: ExpStatement(TestFirst(targets, _), AssignList(value)) -> Assign(<desugar-assign-target><map(desugar-expr(!Store()))> targets, <desugar-assign> value)
+  desugar-stmt: ExpStatement(TestFirst(targets, _), AssignList(value)) -> Assign([<desugar-assign-target><map(desugar-expr(!Store()))> targets], <desugar-assign> value)
   desugar-stmt: ExpStatement(TestFirst(targets, _), AuggAssign(op, value)) -> AugAssign(<desugar-assign-target><map(desugar-expr(!Store()))> targets, <desugar-assign-op> op, <desugar-assign> <desugar-expr(!Load())>value)
   
   desugar-assign-op: PlusEqual()       -> Add()
